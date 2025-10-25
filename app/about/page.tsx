@@ -1,4 +1,4 @@
-function ActionPage() {
+export default function AboutPage() {
   return (
     <div id="action" className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-teal-50">
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-green-600 to-blue-600">
@@ -92,7 +92,7 @@ function ActionPage() {
   );
 }
 
-function StatsCard({ emoji, title, stat, description, color }) {
+function StatsCard({ emoji, title, stat, description, color }: { emoji: string, title: string, stat: string, description: string, color: string }) {
   const colorClasses = {
     red: 'from-red-50 to-orange-50 border-red-200',
     blue: 'from-blue-50 to-cyan-50 border-blue-200',
@@ -100,7 +100,7 @@ function StatsCard({ emoji, title, stat, description, color }) {
   };
 
   return (
-    <div className={`group relative bg-gradient-to-br ${colorClasses[color]} p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2`}>
+    <div className={`group relative bg-gradient-to-br ${colorClasses[color as keyof typeof colorClasses] || ''} p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2`}>
       <div className="text-6xl mb-4 text-center transform group-hover:scale-110 transition-transform">{emoji}</div>
       <h3 className="text-2xl font-bold text-gray-900 mb-3 text-center">{title}</h3>
       <div className={`text-4xl font-bold text-${color}-600 mb-3 text-center`}>{stat}</div>
@@ -109,7 +109,7 @@ function StatsCard({ emoji, title, stat, description, color }) {
   );
 }
 
-function CounterStat({ number, label }) {
+function CounterStat({ number, label }: { number: string, label: string }) {
   return (
     <div>
       <div className="text-3xl md:text-4xl font-bold text-white mb-2">{number}</div>
@@ -118,7 +118,7 @@ function CounterStat({ number, label }) {
   );
 }
 
-function CauseCard({ emoji, title, description }) {
+function CauseCard({ emoji, title, description }: { emoji: string, title: string, description: string }) {
   return (
     <div className="group bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-green-500">
       <div className="text-6xl mb-4 text-center transform group-hover:scale-110 transition-transform">{emoji}</div>
@@ -128,7 +128,7 @@ function CauseCard({ emoji, title, description }) {
   );
 }
 
-function EffectCard({ emoji, title, description }) {
+function EffectCard({ emoji, title, description }: { emoji: string, title: string, description: string }) {
   return (
     <div className="group flex items-start space-x-4 p-6 bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
       <div className="text-5xl transform group-hover:scale-110 transition-transform">{emoji}</div>
@@ -140,7 +140,7 @@ function EffectCard({ emoji, title, description }) {
   );
 }
 
-function ActionCard({ emoji, title, description, tip, tipColor }) {
+function ActionCard({ emoji, title, description, tip, tipColor }: { emoji: string, title: string, description: string, tip: string, tipColor: string }) {
   const tipColorClasses = {
     green: 'bg-green-100 text-green-800',
     blue: 'bg-blue-100 text-blue-800',
@@ -154,7 +154,7 @@ function ActionCard({ emoji, title, description, tip, tipColor }) {
       <div className="text-5xl mb-4 text-center transform group-hover:scale-110 transition-transform">{emoji}</div>
       <h3 className="text-xl font-bold text-gray-900 mb-3">{title}</h3>
       <p className="text-gray-700 mb-4">{description}</p>
-      <div className={`${tipColorClasses[tipColor]} p-3 rounded-lg`}>
+      <div className={`${tipColorClasses[tipColor as keyof typeof tipColorClasses]} p-3 rounded-lg`}>
         <p className="text-sm font-medium">💡 Tip: {tip}</p>
       </div>
     </div>
